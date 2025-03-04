@@ -1,0 +1,31 @@
+﻿@model MvcStok.Models.Entity.TBLKATEGORI
+@{
+    ViewBag.Title = "Ekle";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+
+
+<form class="form-group" method="post">
+    <div>
+        <label>Kategori Adı</label>
+        @Html.TextBoxFor(x => x.KATEGORIAD, new { @class = "form-control" })
+        @*//Bu kod, kullanıcıdan bir kategori adı girmesini sağlayan bir metin kutusu oluşturur. Kullanıcı bu alana bir şeyler yazıp formu gönderdiğinde, girilen değer KATEGORIAD değişkenine atanır.*@
+        @Html.ValidationMessageFor(x => x.KATEGORIAD, "", new { @class = "text-danger" })
+        @*@Html.ValidationMessageFor(...) → Belirtilen alan için doğrulama (validation) hatasını ekrana yazdırır.
+        x => x.KATEGORIAD → Hangi alanın hatasını göstereceğini belirler (KATEGORIAD).
+        "" → Özel bir hata mesajı belirtilmiyor, sistemdeki varsayılan hata mesajı kullanılıyor.
+        new { @class = "text-danger" } → Hata mesajını kırmızı renkte göstermek için bir CSS sın*@
+    </div>
+    <div style="margin-top:10px">
+        <button class="btn btn-warning">Kategori ekle</button>
+    </div>
+</form>
+
+@*form verilerinin sunucuya nasıl gönderileceğini belirler.*@
+
+@*Form, kullanıcıdan gelen veriyi alıp sunucuya gönderen bir kap gibi çalışır.
+    Ve method="post" bu verinin nasıl gönderileceğini belirler. *@
+
+
+    @*Butona basmak, formu tetikleyen olaydır. 🚀*@

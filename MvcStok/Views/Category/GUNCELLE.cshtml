@@ -1,0 +1,47 @@
+﻿@model  MvcStok.Models.Entity.TBLKATEGORI
+
+
+@{
+    ViewBag.Title = "GUNCELLE";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+
+@*//using metodu, C# gibi dillerde kaynak yönetimini otomatik hale getirmek için kullanılır. IDisposable arayüzünü implemente eden nesneleri (örneğin dosya, veritabanı bağlantısı) iş bittikten sonra otomatik olarak temizler.*@
+
+
+@*1️ İlk parametre: "ActionName" → Form gönderildiğinde hangi action metodunun çalışacağını belirler.
+    2️ İkinci parametre: "ControllerName" → Formun hangi controller’a gideceğini belirtir.
+    3️ Üçüncü parametre: FormMethod.Post → GET veya POST metodu olup olmadığını belirler.*@
+@using (Html.BeginForm("Guncellee", "Category", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(x => x.KATEGORIID)
+        @Html.TextBoxFor(x => x.KATEGORIID, new { @class = "form-control", style = "width:500px" })
+
+        <br />
+        @*
+            LabelFor → Label (etiket) oluşturur.
+            TextBoxFor → Modeldeki değeri input'a otomatik olarak atar.
+        *@
+        @Html.LabelFor(x => x.KATEGORIAD)
+        @Html.TextBoxFor(x => x.KATEGORIAD, new { @class = "form-control", style = "width:500px" })
+    </div>
+    <br />
+    <div>
+        <button class="btn btn-warning">Kategori Güncelle</button>
+    </div>
+}
+
+
+<!--
+.
+Özetle:
+✅ LabelFor → Etiketin adını belirler.
+✅ TextBoxFor → Input'un içeriğini belirler.
+    📌 Özetle Çalışma Sırası:
+1️⃣ View (GUNCELLE.cshtml) yüklenir ve kullanıcıya mevcut kategori bilgileri gösterilir.
+2️⃣ Kullanıcı bilgileri güncelleyip "Kategori Güncelle" butonuna basar.
+3️⃣ Form verileri Controller’a (Guncellee metoduna) gider.
+4️⃣ Controller veritabanında ilgili kategoriyi bulur ve günceller.
+5️⃣ Güncelleme kaydedilir ve kullanıcı Index sayfasına yönlendirilir.

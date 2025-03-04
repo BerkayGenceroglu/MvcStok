@@ -1,0 +1,34 @@
+﻿@using MvcStok.Models.Entity;
+@model  List<TBLKATEGORI>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<table class="table table-bordered">
+    <tr>
+        <th>KATEGORİ ID</th>
+        <th>KATEGORİ ADI</th>
+        <th>SİL</th>
+        <th>GÜncelle</th>
+    </tr>
+    <tbody>
+        @foreach (var ktgr in Model)
+        {
+            <tr>
+                <td>@ktgr.KATEGORIID</td>
+                <td>@ktgr.KATEGORIAD</td>
+                <td><a href="/Category/SIL/@ktgr.KATEGORIID" class="btn btn-danger">Sil</a></td>
+                <td><a href="/Category/GUNCELLE/@ktgr.KATEGORIID" class="btn btn-success">Güncelle</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a href="/Category/Ekle/" class="btn btn-primary">Yeni Kategori Ekle</a>
+
+
+@*<tr> (Table Row) → Tablo satırını oluşturur.
+    <td> (Table Data) → Tablo hücresini (veri sütunu) oluşturur.
+    <th> (Table Header) → Başlık hücresini oluşturur (genellikle koyu ve ortalanmış olur).
+    <tbody> (Table Body) → Tablonun gövdesini gruplamak için kullanılır.*@

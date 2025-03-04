@@ -1,0 +1,36 @@
+﻿@model MvcStok.Models.Entity.TBLSATIS
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal1">Satış İçin Tıklayınız</button>
+<div class="modal" id="Modal1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Satış İşlemi</h2>
+            </div>
+            <div class="modal-body">
+                <form method="post" action="/Order/AddOrder">
+                    <label>Ürün Id</label>
+                    @Html.TextBoxFor(x => x.URUN, new { @class = "form-control" })
+                    <br />
+                    <label>Müşteri Id</label>
+                    @Html.TextBoxFor(x => x.MUSTERI, new { @class = "form-control" })
+                    <br />
+                    <label>Adet</label>
+                    @Html.TextBoxFor(x => x.ADET, new { @class = "form-control" })
+                    <br />
+                    <label>Fıyat</label>
+                    @Html.TextBoxFor(x => x.FIYAT, new { @class = "form-control" })
+                    <br />
+                    <button class="btn btn-warning">Satış İşlemini Kaydet</button>
+                    <button type="submit" class="btn btn-danger" data-dismiss="modal">Vazgeç</button>
+                    @*data-dismiss="modal": Bootstrap modallarında (açılır pencerelerde) kullanılır.
+                    Bu butona tıklanınca, içinde bulunduğu modal kapanır.*@
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

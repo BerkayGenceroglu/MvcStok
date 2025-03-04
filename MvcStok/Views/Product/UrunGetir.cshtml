@@ -1,0 +1,39 @@
+﻿@model MvcStok.Models.Entity.TBLURUN
+@{
+    ViewBag.Title = "UrunGetir";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+
+@*Bu metotlar, belirli bir modelin özelliklerini temel alarak HTML form elemanları oluşturur. Böylece, form gönderildiğinde veriler doğrudan modele bağlanır ve kontrol edilir.*@
+
+@*Model ile bağlantılıdır → Formdaki veriler otomatik olarak modelin ilgili özelliğine bağlanır.
+Daha az hata yapma şansı → Model değişirse, For metotları otomatik olarak güncellenir.
+Kodu daha düzenli tutar → Elle ID veya Name tanımlamaya gerek kalmaz, her şey model*@
+
+@using (Html.BeginForm("Guncelle", "Product", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(x => x.URUNID)
+        @Html.TextBoxFor(x => x.URUNID, new { @class = "form-control", style = "width:500px" })
+        <br />
+        @Html.LabelFor(x => x.URUNAD)
+        @Html.TextBoxFor(x => x.URUNAD, new { @class = "form-control", style = "width:500px" })
+        <br />
+        @Html.LabelFor(x => x.URUNKATEGORI)
+        @Html.DropDownListFor(x => x.TBLKATEGORI.KATEGORIID, (List<SelectListItem>)ViewBag.brkay, new { @class = "form-control", style = "width:500px" })
+        <br />
+        @Html.LabelFor(x => x.FIYAT)
+        @Html.TextBoxFor(x => x.FIYAT, new { @class = "form-control", style = "width:500px" })
+        <br />
+        @Html.LabelFor(x => x.MARKA)
+        @Html.TextBoxFor(x => x.MARKA, new { @class = "form-control", style = "width:500px" })
+        <br />
+        @Html.LabelFor(x => x.STOK)
+        @Html.TextBoxFor(x => x.STOK, new { @class = "form-control", style = "width:500px" })
+    </div>
+    <br />
+    <div>
+        <button class="btn btn-warning">Ürün Güncelle</button>
+    </div>
+}

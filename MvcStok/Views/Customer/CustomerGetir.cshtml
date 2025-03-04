@@ -1,0 +1,26 @@
+﻿@model  MvcStok.Models.Entity.TBLMUSTERI
+
+@{
+    ViewBag.Title = "CustomerGetir";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+@using (Html.BeginForm("Guncelle", "Customer", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(x => x.MUSTERIID)
+        @Html.TextBoxFor(x => x.MUSTERIID, new { @class = "form-control", style = "width:500px" })
+        <br />
+        @Html.LabelFor(x => x.MUSTERIAD)
+        @Html.TextBoxFor(x => x.MUSTERIAD, new { @class = "form-control", style = "width:500px" })
+        <br />
+        @Html.LabelFor(x => x.MUSTERISOYAD)
+        @Html.TextBoxFor(x => x.MUSTERISOYAD, new { @class = "form-control", style = "width:500px" })
+        <br />
+    </div>
+    <div>
+        <button class="btn btn-warning">Müşteri Güncelle</button>
+    </div>
+}
+@*//Yani CustomerGetir(int id) metodu, TBLMUSTERI tablosundan id'ye göre bir müşteri buluyor ve bu müşteri nesnesini View'e model olarak gönderiyor. View'de ise @model MvcStok.Models.Entity.TBLMUSTERI satırı ile bu modeli alıyoruz ve içindeki verilere erişiyoruz. Yeni bir model tanımlamıyoruz, sadece var olan veriyi kullanıyoruz.*@
+@*@model //MvcStok.Models.Entity.TBLMUSTERI satırı, view'in modelinin TBLMUSTERI türünde olduğunu belirtir.*@ 
